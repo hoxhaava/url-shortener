@@ -2,6 +2,8 @@ import Fastify from "fastify";
 import "dotenv/config";
 import { query } from "./lib/db.js";
 import { redis } from "./lib/redis.js";
+import { shortenRoutes } from "./routes/shorten.js";
+import { redirectRoutes } from "./routes/redirect.js";
 
 const app = Fastify({ logger: true });
 const PORT = Number(process.env.PORT ?? 3000);
@@ -27,6 +29,9 @@ app.get("/redis-health", async (req, reply) => {
       return { ok: false, error: "redis unreachable" };
     }
 });
+
+app.register(shortenRoutes);
+app.register(redirectRoutes);
 
 app.listen({ port: PORT }).catch((err) => {
   app.log.error(err);

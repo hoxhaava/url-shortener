@@ -3,11 +3,11 @@
 A URL shortener with a simple REST API.
 
 ## Stack
-- **Fastify** (Node.js, TypeScript)
-- **PostgreSQL** (persistent storage)
-- **Docker Compose** (Postgres/Redis infra)
-- **Zod** (input validation)
-- **nanoid** (short code generation)
+- **Fastify**
+- **PostgreSQL** 
+- **Docker Compose**
+- **Zod**
+- **nanoid**
 
 ## Features (current)
 - `POST /shorten` → create a short URL (random or custom code)
